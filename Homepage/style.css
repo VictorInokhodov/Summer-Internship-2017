@@ -1,0 +1,239 @@
+body {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+p, span {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+}
+
+div.top{
+    margin: auto;
+    width: 1080px;
+    border-bottom: 2px dotted black;
+    position: relative;
+}
+
+div.bottom {
+    height: auto;
+    width: 1080px;
+    margin: auto;
+}
+
+div.bottom::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+div.top::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.photo {
+    width: 200px;
+    margin-left: 0;
+    float: left;
+    margin-left: 0;
+    margin-bottom: 10px; 
+    padding: 5px;
+}
+
+.photo-top{
+    border: 2px solid black;
+}
+
+.photo-bottom {
+    opacity: 0.5;
+}
+
+.image-dot {
+    width: 50px;
+    position: relative;
+    top: 80px;
+    left: -180px;
+}
+
+#ball-title {
+    position: relative;
+    top: 60px;
+    left: -80px;
+    font-style: italic;
+    font-size: 20px;
+}
+
+.photo::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+p.about {
+    font-style: italic;
+    margin-left: 230px;
+    margin-right: 5px; 
+}
+
+.block-yellow {
+    margin-left: 5px;
+    display: inline-block;
+    background: yellow;
+    height: 15px;
+    width: 30px;
+    vertical-align: middle;
+}
+
+.top .left, .bottom .left {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px; 
+    position: relative;
+    float: left;
+    width: 500px;
+}
+
+.about-end {
+    font-weight: bold;
+    margin-left: 10px; 
+}
+
+h1 {
+    margin: 0;
+    font-size: 80px;
+}
+
+h2 {
+    margin: 0;
+    color: gold;
+    font-size: 40;
+}
+
+.right {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    float: right;
+    width: 500px;  
+    position: relative;
+}
+
+progress {
+    margin-top: 20px;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-bottom:20px;  
+    width: 70%;
+    background-color: #f3f3f3;
+    border: 0;
+    height: 18px;
+    vertical-align: middle;
+}
+
+progress::-webkit-progress-value {
+    background: gold;
+    border-radius: 2px;
+    height: 25px;
+    border-right: 2px solid black;
+}
+
+progress::-webkit-progress-bar {
+    height: 25px;
+    border-radius: 9px;
+    background: rgb(194, 193, 191);
+}
+
+.absolute {
+    position: absolute;
+    left: 10px;
+    font-style: italic;
+}
+
+.absolute.a-1{
+    top: 152px;
+}
+
+.absolute.a-2{
+    top: 210px;
+}
+
+.absolute.a-3{
+    top: 268px;
+}
+
+.absolute.a-4{
+    top: 325px;
+}
+
+.absolute.a-5{
+    top: 383px;
+}
+
+.bottom .right {
+    height: 300px;
+}
+
+.block {
+    background-color: gold;
+    margin-bottom: 0;
+    width: 100px;
+    height: 50px;
+    position: relative;
+}
+
+.block-left {
+    float: left;
+}
+
+.block-middle {
+    float: left;
+    margin-left: 65px; 
+}
+
+.block-right {
+    float: left;
+    margin-left: 65px; 
+}
+
+.block > img {
+    position: absolute;
+    width: 40px;
+    position: absolute;
+    top: -7px;
+    right: -14px;
+}
+
+#smile {
+    font-style: normal;
+    font-size: 30px;
+    margin-top: 20px; 
+}
+
+.bottom .right::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.ball-center-right {
+    position: absolute;
+    bottom: -23px;
+    right: -1px;
+}
+
+.ball-center-right > #ball {
+    width: 40px;
+}
+
+.ball-center-right > #bookmark {
+    width: 30px;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
