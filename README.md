@@ -8,4 +8,4 @@
     * a
     * b
 
-To get more **information** read there: [Github: Marcdown](https://guides.github.com/features/mastering-markdown/)
+To get more **information** read there: [Github: Markdown](https://guides.github.com/features/mastering-markdown/)
