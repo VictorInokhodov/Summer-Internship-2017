@@ -1,5 +1,9 @@
 body {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+    background: url("cell.png");
+}
+
+h1, h2 {
+    text-transform: uppercase;
 }
 
 p, span {
@@ -46,7 +50,7 @@ div.top::after {
 }
 
 .photo-bottom {
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 .image-dot {
@@ -102,6 +106,7 @@ p.about {
 h1 {
     margin: 0;
     font-size: 80px;
+    
 }
 
 h2 {
@@ -151,27 +156,27 @@ progress::-webkit-progress-bar {
 }
 
 .absolute.a-1{
-    top: 152px;
+    top: 142px;
 }
 
 .absolute.a-2{
-    top: 210px;
+    top: 200px;
 }
 
 .absolute.a-3{
-    top: 268px;
+    top: 258px;
 }
 
 .absolute.a-4{
-    top: 325px;
+    top: 315px;
 }
 
 .absolute.a-5{
-    top: 383px;
+    top: 373px;
 }
 
 .bottom .right {
-    height: 300px;
+    height: 290px;
 }
 
 .block {
