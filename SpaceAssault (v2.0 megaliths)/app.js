@@ -292,6 +292,15 @@ function checkCollisions() {
         var pos = enemies[i].pos;
         var size = enemies[i].sprite.size;
 
+        for(var j = 0; j < megaliths.length; j++) {
+            if(megalithsBoxCollides(pos, size[1],
+                megaliths[j].pos, megaliths[j].size)) {
+                    pos[0] = enemies[i].lastMove;
+                    
+                    pos[1] -= 1;
+            }
+        }
+
         for(var j=0; j<bullets.length; j++) {
             var pos2 = bullets[j].pos;
             var size2 = bullets[j].sprite.size;
@@ -315,15 +324,6 @@ function checkCollisions() {
 
                 bullets.splice(j, 1);
                 break;
-            }
-        }
-
-        for(var j = 0; j < megaliths.length; j++) {
-            if(megalithsBoxCollides(pos, size[1],
-                megaliths[j].pos, megaliths[j].size)) {
-                    pos[0] = enemies[i].lastMove;
-                    
-                    pos[1] -= 1;
             }
         }
 
