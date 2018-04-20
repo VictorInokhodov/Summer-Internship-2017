@@ -17,8 +17,12 @@ namespace Model
             Image = new Entities.Image(dir + "/block.png", dir + "/Gold_Block.png",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 dir + "/ball.png", dir + "/tank_up.png", dir + "/tank_down.png",
                 dir + "/tank_left.png", dir + "/tank_right.png"); 
+=======
+                dir + "/Ball.png", dir + "/Tank.png"); 
+>>>>>>> parent of 3bca169... finished Tanks game
 =======
                 dir + "/Ball.png", dir + "/Tank.png"); 
 >>>>>>> parent of 3bca169... finished Tanks game

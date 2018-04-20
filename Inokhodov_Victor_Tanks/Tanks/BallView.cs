@@ -13,6 +13,7 @@ namespace Tanks
     {
         public static void DrawBall(Ball ball, Graphics flagGraphics)
 <<<<<<< HEAD
+<<<<<<< HEAD
         { 
             if (ball.Bullet.IsEnable)
             {
@@ -22,6 +23,10 @@ namespace Tanks
             }
 
 
+=======
+        {
+            //flagGraphics.FillEllipse(Brushes.Blue, ball.PosX, ball.PosY, ball.Size, ball.Size);
+>>>>>>> parent of 3bca169... finished Tanks game
 =======
         {
             //flagGraphics.FillEllipse(Brushes.Blue, ball.PosX, ball.PosY, ball.Size, ball.Size);
