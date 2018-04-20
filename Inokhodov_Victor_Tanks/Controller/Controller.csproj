@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppleController.cs" />
     <Compile Include="BallController.cs" />
     <Compile Include="BlockController.cs" />
     <Compile Include="ImageController.cs" />

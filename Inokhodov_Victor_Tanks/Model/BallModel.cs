@@ -25,6 +25,82 @@ namespace Model
             ball.Direction = direction;
         }
 
+        public bool MoveBullet(int width, int height)
+        {
+            if (ball.Bullet.IsEnable)
+            {
+                MoveBullet(ball.Bullet);
+
+                if (Collision.CollisionWithBorders(ball.Bullet, width, height))
+                {
+                    ball.Bullet.IsEnable = false;
+                    ball.Bullet.wasDisabled = DateTime.Now;
+                }
+
+                foreach (Block block in BlockModel.GetBlocks())
+                {
+                    if (Collision.CollisionBox(ball.Bullet, block) && block.IsEnabled)
+                    {
+                        ball.Bullet.IsEnable = false;
+                        ball.Bullet.wasDisabled = DateTime.Now;
+
+                        if (block.Name == "b")
+                        {
+                            block.IsEnabled = false;
+                        }
+                    }
+                }
+
+                foreach (Tank tank in TankModel.GetTanks())
+                {
+                    if (Collision.CollisionBox(ball.Bullet, tank))
+                    {
+                        ball.Bullet.IsEnable = false;
+                        ball.Bullet.wasDisabled = DateTime.Now;
+                        tank.IsEnable = false;
+                        tank.PosX = -tank.Size;
+
+                        return true;
+                    }
+
+                    if (Collision.CollisionBox(ball.Bullet, tank.Bullet))
+                    {
+                        ball.Bullet.IsEnable = false;
+                        tank.Bullet.IsEnable = false;
+                        ball.Bullet.wasDisabled = DateTime.Now;
+                        tank.Bullet.wasDisabled = DateTime.Now;
+
+                        tank.Bullet.PosX = -tank.Size;
+                        ball.Bullet.PosX = -ball.Size;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private void MoveBullet(Bullet bullet)
+        {
+            switch (bullet.Direction)
+            {
+                case Direction.Left:
+                    bullet.PosX -= bullet.Speed;
+                    break;
+
+                case Direction.Up:
+                    bullet.PosY -= bullet.Speed;
+                    break;
+
+                case Direction.Right:
+                    bullet.PosX += bullet.Speed;
+                    break;
+
+                case Direction.Down:
+                    bullet.PosY += bullet.Speed;
+                    break;
+            }
+        }
+
         public void CheckCollision(int x, int y, int width, int height)
         {
             if (Collision.CollisionWithBorders(ball, width, height))
@@ -33,9 +109,9 @@ namespace Model
                 ball.PosY -= y;
             }
 
-            foreach (ICollisionable block in BlockModel.GetBlocks())
+            foreach (Block block in BlockModel.GetBlocks())
             {
-                if (Collision.CollisionBox(ball, block))
+                if (Collision.CollisionBox(ball, block) && block.IsEnabled)
                 {
                     ball.PosX -= x;
                     ball.PosY -= y;
@@ -45,7 +121,36 @@ namespace Model
 
         public void Shoot()
         {
-            throw new NotImplementedException();
+            if (!ball.Bullet.IsEnable &&
+                (DateTime.Now - ball.Bullet.wasDisabled).Milliseconds > 300)
+            {
+                var bul = ball.Bullet;
+                bul.IsEnable = true;
+                bul.Direction = ball.Direction;
+
+                switch (bul.Direction)
+                {
+                    case Direction.Left:
+                        bul.PosX = ball.PosX + ball.Size / 2;
+                        bul.PosY = ball.PosY + ball.Size / 2 - bul.Size / 2;
+                        break;
+
+                    case Direction.Up:
+                        bul.PosX = ball.PosX + ball.Size / 2 - bul.Size / 2;
+                        bul.PosY = ball.PosY + ball.Size / 2;
+                        break;
+
+                    case Direction.Right:
+                        bul.PosX = ball.PosX + ball.Size / 2;
+                        bul.PosY = ball.PosY + ball.Size / 2 - bul.Size / 2;
+                        break;
+
+                    case Direction.Down:
+                        bul.PosX = ball.PosX + ball.Size / 2 - bul.Size / 2;
+                        bul.PosY = ball.PosY + ball.Size / 2;
+                        break;
+                }
+            }
         }
 
     }

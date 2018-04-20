@@ -33,7 +33,7 @@ namespace Model
 
             foreach (Block block in BlockModel.GetBlocks())
             {
-                if (Collision.CollisionBox(tank, block))
+                if (Collision.CollisionBox(tank, block) && block.IsEnabled)
                 {
                     NewDirection(tank);
                     tank.PosX -= x;
@@ -105,9 +105,126 @@ namespace Model
             tank.PosY += y;
         }
 
+        public bool MoveBullet(int width, int height)
+        {
+            foreach (Tank tank in tanks)
+            {
+                if (tank.Bullet.IsEnable)
+                {
+                    MoveBullet(tank, tank.Bullet);
+
+                    if (Collision.CollisionWithBorders(tank.Bullet, width, height))
+                    {
+                        tank.Bullet.IsEnable = false;
+                        tank.Bullet.PosX = -tank.Size;
+                        tank.Bullet.wasDisabled = DateTime.Now;
+                    }
+
+                    if (Collision.CollisionBox(tank.Bullet, BallModel.GetBall()))
+                    {
+                        return true;
+                    }
+
+                    foreach (Block block in BlockModel.GetBlocks())
+                    {
+                        if (Collision.CollisionBox(tank.Bullet, block) && block.IsEnabled)
+                        {
+                            tank.Bullet.IsEnable = false;
+                            tank.Bullet.PosX = -tank.Size;
+                            tank.Bullet.wasDisabled = DateTime.Now;
+
+                            if (block.Name == "b")
+                            {
+                                block.IsEnabled = false;
+                            }
+                        }
+                    }
+
+                    foreach (Tank el in tanks)
+                    {
+                        if (el != tank)
+                        {
+                            if (Collision.CollisionBox(tank.Bullet, el))
+                            {
+                                tank.Bullet.IsEnable = false;
+                                tank.Bullet.PosX = -tank.Size;
+                                tank.Bullet.wasDisabled = DateTime.Now;
+                            }
+
+                            if (Collision.CollisionBox(tank.Bullet, el.Bullet))
+                            {
+                                tank.Bullet.IsEnable = false;
+                                tank.Bullet.PosX = -tank.Size;
+                                el.Bullet.IsEnable = false;
+                                el.Bullet.PosX = -el.Size;
+                                tank.Bullet.wasDisabled = DateTime.Now;
+                                el.Bullet.wasDisabled = DateTime.Now;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        private void MoveBullet(Tank tank, Bullet bullet)
+        {
+            switch (bullet.Direction)
+            {
+                case Direction.Left:
+                    bullet.PosX -= bullet.Speed;
+                    break;
+
+                case Direction.Up:
+                    bullet.PosY -= bullet.Speed;
+                    break;
+
+                case Direction.Right:
+                    bullet.PosX += bullet.Speed;
+                    break;
+
+                case Direction.Down:
+                    bullet.PosY += bullet.Speed;
+                    break;
+            }
+        }
+
         public void Shoot()
         {
-            throw new NotImplementedException();
+            foreach (Tank tank in tanks)
+            {
+                if (!tank.Bullet.IsEnable && tank.IsEnable && 
+                    (DateTime.Now - tank.Bullet.wasDisabled).Milliseconds > 900)
+                {
+                    var bul = tank.Bullet;
+                    bul.IsEnable = true;
+                    bul.Direction = tank.Direction;
+
+                    switch (bul.Direction)
+                    {
+                        case Direction.Left:
+                            bul.PosX = tank.PosX + tank.Size / 2;
+                            bul.PosY = tank.PosY + tank.Size / 2 - bul.Size / 2;
+                            break;
+
+                        case Direction.Up:
+                            bul.PosX = tank.PosX + tank.Size / 2 - bul.Size / 2;
+                            bul.PosY = tank.PosY + tank.Size / 2;
+                            break;
+
+                        case Direction.Right:
+                            bul.PosX = tank.PosX + tank.Size / 2;
+                            bul.PosY = tank.PosY + tank.Size / 2 - bul.Size / 2;
+                            break;
+
+                        case Direction.Down:
+                            bul.PosX = tank.PosX + tank.Size / 2 - bul.Size / 2;
+                            bul.PosY = tank.PosY + tank.Size / 2;
+                            break;
+                    }
+                }
+            }
         }
     }
 }

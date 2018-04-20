@@ -12,6 +12,7 @@ namespace Model.Interfaces
         void CreateBall(int x, int y, int size, int speed);
         void Move(int x, int y, Direction direction);
         void CheckCollision(int x, int y, int width, int height);
+        bool MoveBullet(int width, int height);
         void Shoot();
     }
 }

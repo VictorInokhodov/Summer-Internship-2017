@@ -10,15 +10,30 @@ namespace Entities
     {
         public System.Drawing.Image BBlock { get; private set; }
         public System.Drawing.Image WBlock { get; private set; }
-        public System.Drawing.Image Ball { get; private set; }
-        public System.Drawing.Image Tank { get; private set; }
+        public System.Drawing.Image BallUp { get; private set; }
+        public System.Drawing.Image BallDown { get; private set; }
+        public System.Drawing.Image BallRight { get; private set; }
+        public System.Drawing.Image BallLeft { get; private  set; }
+        public System.Drawing.Image TankDown { get; private set; }
+        public System.Drawing.Image TankUp { get; private set; }
+        public System.Drawing.Image TankLeft { get; private set; }
+        public System.Drawing.Image TankRight { get; private set; }
 
-        public Image(string BPath, string WPath, string BallPath, string TankPath)
+        public Image(string BPath, string WPath, string ballUp, string ballDown, string ballLeft, string ballRight, 
+            string tankUp, string tankDown, string tankLeft, string tankRight)
         {
             BBlock = System.Drawing.Image.FromFile(BPath);
             WBlock = System.Drawing.Image.FromFile(WPath);
-            Ball = System.Drawing.Image.FromFile(BallPath);
-            Tank = System.Drawing.Image.FromFile(TankPath);
+
+            BallUp = System.Drawing.Image.FromFile(ballUp);
+            BallDown = System.Drawing.Image.FromFile(ballDown);
+            BallLeft = System.Drawing.Image.FromFile(ballLeft);
+            BallRight = System.Drawing.Image.FromFile(ballRight);
+
+            TankDown = System.Drawing.Image.FromFile(tankDown);
+            TankUp = System.Drawing.Image.FromFile(tankUp);
+            TankLeft = System.Drawing.Image.FromFile(tankLeft);
+            TankRight = System.Drawing.Image.FromFile(tankRight);
         }
     }
 }

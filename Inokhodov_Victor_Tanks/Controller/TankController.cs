@@ -32,36 +32,43 @@ namespace Controller
 
             foreach (Entities.Tank tank in TankModel.GetTanks())
             {
-                switch (tank.Direction)
+                if (tank.IsEnable)
                 {
-                    case Direction.Left:
-                        tankModel.Move(tank, -tank.Speed, 0);
-                        gameOver = tankModel.CheckCollision(tank, -tank.Speed, 0, width, height);
-                        break;
+                    switch (tank.Direction)
+                    {
+                        case Direction.Left:
+                            tankModel.Move(tank, -tank.Speed, 0);
+                            gameOver = tankModel.CheckCollision(tank, -tank.Speed, 0, width, height);
+                            break;
 
-                    case Direction.Up:
-                        tankModel.Move(tank, 0, -tank.Speed);
-                        gameOver = tankModel.CheckCollision(tank, 0, -tank.Speed, width, height);
-                        break;
+                        case Direction.Up:
+                            tankModel.Move(tank, 0, -tank.Speed);
+                            gameOver = tankModel.CheckCollision(tank, 0, -tank.Speed, width, height);
+                            break;
 
-                    case Direction.Right:
-                        tankModel.Move(tank, tank.Speed, 0);
-                        gameOver = tankModel.CheckCollision(tank, tank.Speed, 0, width, height);
-                        break;
+                        case Direction.Right:
+                            tankModel.Move(tank, tank.Speed, 0);
+                            gameOver = tankModel.CheckCollision(tank, tank.Speed, 0, width, height);
+                            break;
 
-                    case Direction.Down:
-                        tankModel.Move(tank, 0, tank.Speed);
-                        gameOver = tankModel.CheckCollision(tank, 0, tank.Speed, width, height);
-                        break;
-                }
+                        case Direction.Down:
+                            tankModel.Move(tank, 0, tank.Speed);
+                            gameOver = tankModel.CheckCollision(tank, 0, tank.Speed, width, height);
+                            break;
+                    }
 
-                if (gameOver)
-                {
-                    return gameOver;
+                    if (gameOver)
+                    {
+                        return gameOver;
+                    }
                 }
             }
 
             return gameOver;
         }
+
+        public void Shoot() => tankModel.Shoot();
+
+        public bool MoveBullets(int width, int height) => tankModel.MoveBullet(width, height);
     }
 }

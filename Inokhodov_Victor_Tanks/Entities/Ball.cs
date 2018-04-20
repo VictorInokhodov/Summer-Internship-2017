@@ -14,6 +14,7 @@ namespace Entities
         public int Size { get; private set; }
         public int Speed { get; set; }
         public Direction Direction { get; set; }
+        public Bullet Bullet;
 
         public Ball(int x, int y, int size, int speed)
         {
@@ -21,6 +22,7 @@ namespace Entities
             PosY = y;
             Size = size;
             Speed = speed;
+            Bullet = new Bullet(0, 0, size / 3, speed + 1);
             Direction = Direction.Up;
         }
     }

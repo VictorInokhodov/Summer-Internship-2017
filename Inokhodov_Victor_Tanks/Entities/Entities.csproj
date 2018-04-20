@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apple.cs" />
     <Compile Include="Ball.cs" />
     <Compile Include="Block.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Collision.cs" />
-    <Compile Include="Enum.cs" />
+    <Compile Include="DirectionEnum.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Interfaces\ICollisionable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

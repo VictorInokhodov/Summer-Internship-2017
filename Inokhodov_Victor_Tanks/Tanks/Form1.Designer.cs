@@ -41,7 +41,7 @@
             // 
             // pictureBox
             // 
-            this.pictureBox.BackColor = System.Drawing.Color.Maroon;
+            this.pictureBox.BackColor = System.Drawing.Color.ForestGreen;
             this.pictureBox.Location = new System.Drawing.Point(0, 25);
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.Size = new System.Drawing.Size(585, 596);
@@ -83,7 +83,7 @@
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.ForestGreen;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(585, 595);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.menuStrip1);
