@@ -20,29 +20,7 @@ namespace Tanks
                 flagGraphics.FillEllipse(Brushes.Black, bul.PosX, bul.PosY, bul.Size, bul.Size);
             }
 
-            System.Drawing.Image img = ImageModel.GetImages().BallUp;
-
-            switch (ball.Direction)
-            {
-                case Direction.Down:
-                    img = ImageModel.GetImages().BallDown;
-                    break;
-
-                case Direction.Left:
-                    img = ImageModel.GetImages().BallLeft;
-                    break;
-
-                case Direction.Right:
-                    img = ImageModel.GetImages().BallRight;
-                    break;
-
-                case Direction.Up:
-                    img = ImageModel.GetImages().BallUp;
-                    break;
-            }
-
-            //flagGraphics.FillEllipse(Brushes.Blue, ball.PosX, ball.PosY, ball.Size, ball.Size);
-            flagGraphics.DrawImage(img, ball.PosX, ball.PosY, ball.Size, ball.Size);
+            flagGraphics.DrawImage(ImageModel.GetImages().Ball, ball.PosX, ball.PosY, ball.Size, ball.Size);
         }
     }
 }
