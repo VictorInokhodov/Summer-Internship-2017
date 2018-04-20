@@ -14,16 +14,20 @@ namespace Tanks
         {
             foreach (Block block in blocks)
             {
-                if (block.IsEnabled)
+                var points = new Point[]
                 {
-                    if (block.Name == "b")
-                    {
-                        flagGraphics.FillRectangle(Brushes.Gray, block.PosX, block.PosY, block.Size, block.Size);
-                    }
-                    else
-                    {
-                        flagGraphics.FillRectangle(Brushes.Gold, block.PosX, block.PosY, block.Size, block.Size);
-                    }
+                    new Point(block.PosX, block.PosY),
+                    new Point(block.PosX + block.Size, block.PosY),
+                    new Point(block.PosX, block.PosY + block.Size),
+                };
+
+                if (block.Name == "b")
+                {
+                    flagGraphics.FillRectangle(Brushes.Gray, block.PosX, block.PosY, block.Size, block.Size);
+                }
+                else
+                {
+                    flagGraphics.FillRectangle(Brushes.Gold, block.PosX, block.PosY, block.Size, block.Size);
                 }
             }
 

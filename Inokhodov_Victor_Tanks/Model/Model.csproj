@@ -40,11 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppleModel.cs" />
     <Compile Include="BallModel.cs" />
     <Compile Include="BlockModel.cs" />
     <Compile Include="ImageModel.cs" />
-    <Compile Include="Interfaces\IAppleModel.cs" />
     <Compile Include="Interfaces\IBallModel.cs" />
     <Compile Include="Interfaces\IBlockModel.cs" />
     <Compile Include="Interfaces\ITankModel.cs" />

@@ -15,8 +15,12 @@ namespace Model
         {
             var dir = Directory.GetCurrentDirectory() + @"/Images";
             Image = new Entities.Image(dir + "/block.png", dir + "/Gold_Block.png",
+<<<<<<< HEAD
                 dir + "/ball.png", dir + "/tank_up.png", dir + "/tank_down.png",
                 dir + "/tank_left.png", dir + "/tank_right.png"); 
+=======
+                dir + "/Ball.png", dir + "/Tank.png"); 
+>>>>>>> parent of 3bca169... finished Tanks game
         }
 
         public static Entities.Image GetImages() => Image;

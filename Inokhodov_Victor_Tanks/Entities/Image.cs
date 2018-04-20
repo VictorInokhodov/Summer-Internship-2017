@@ -11,6 +11,7 @@ namespace Entities
         public System.Drawing.Image BBlock { get; private set; }
         public System.Drawing.Image WBlock { get; private set; }
         public System.Drawing.Image Ball { get; private set; }
+<<<<<<< HEAD
         public System.Drawing.Image TankDown { get; private set; }
         public System.Drawing.Image TankUp { get; private set; }
         public System.Drawing.Image TankLeft { get; private set; }
@@ -28,6 +29,16 @@ namespace Entities
             TankUp = System.Drawing.Image.FromFile(tankUp);
             TankLeft = System.Drawing.Image.FromFile(tankLeft);
             TankRight = System.Drawing.Image.FromFile(tankRight);
+=======
+        public System.Drawing.Image Tank { get; private set; }
+
+        public Image(string BPath, string WPath, string BallPath, string TankPath)
+        {
+            BBlock = System.Drawing.Image.FromFile(BPath);
+            WBlock = System.Drawing.Image.FromFile(WPath);
+            Ball = System.Drawing.Image.FromFile(BallPath);
+            Tank = System.Drawing.Image.FromFile(TankPath);
+>>>>>>> parent of 3bca169... finished Tanks game
         }
     }
 }

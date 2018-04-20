@@ -14,6 +14,5 @@ namespace Model.Interfaces
         void Move(Tank tank, int x, int y);
         bool CheckCollision(Tank tank, int x, int y, int width, int height);
         void Shoot();
-        bool MoveBullet(int width, int height);
     }
 }
