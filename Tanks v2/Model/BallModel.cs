@@ -54,15 +54,11 @@ namespace Model
 
                 foreach (Block block in blocks)
                 {
-                    if (Collision.CollisionBox(ball.Bullet, block) && block.IsEnabled)
+                    if (Collision.CollisionBox(ball.Bullet, block) && block.IsEnabled && block.Name == "b")
                     {
                         ball.Bullet.IsEnable = false;
                         ball.Bullet.wasDisabled = DateTime.Now;
-
-                        if (block.Name == "b")
-                        {
-                            block.IsEnabled = false;
-                        }
+                        block.IsEnabled = false;
                     }
                 }
 

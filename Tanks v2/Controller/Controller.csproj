@@ -44,6 +44,7 @@
     <Compile Include="AppleController.cs" />
     <Compile Include="BallController.cs" />
     <Compile Include="BlockController.cs" />
+    <Compile Include="FieldController.cs" />
     <Compile Include="ImageController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TankController.cs" />

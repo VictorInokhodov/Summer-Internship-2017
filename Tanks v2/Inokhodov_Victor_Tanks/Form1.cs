@@ -26,39 +26,30 @@ namespace Inokhodov_Victor_Tanks
         private Point ballPosition = new Point(135, 540);
         InfoForm infoForm;
 
+        private Field gameField;
+
         private const int horizontalSizeDifference = 15;
         private const int verticalSizeDifference = 60;
 
-        private int width = 0;
-        private int height = 0;
         private int score = 0;
-        private int numOfApples;
-        private int numOfTanks;
-        private double blockSize;
-        private int fieldSize;
-        private int speed;
         private bool gameOver = false;
         private int killedTanks = 0;
         private const double numOfBlocks = 13.0;
         private const int blockTankSizeDifference = 10;
 
-        public MainForm(int size, int enemies, int apples, int speed)
+        public MainForm(Field gameField)
         {
-            width = height = size;
-            this.speed = speed;
-            fieldSize = size;
-            blockSize = size / numOfBlocks;
             var dir = Directory.GetCurrentDirectory();
-            numOfApples = apples;
-            numOfTanks = enemies;
+
+            this.gameField = gameField;
 
             tanksPositions = new List<Point>
             {
                  new Point(0, 0),
-                 new Point((int) blockSize * 2, 0),
-                 new Point((int) blockSize * 4, 0),
-                 new Point((int) blockSize * 8, 0),
-                 new Point((int) blockSize * 12, 0)
+                 new Point((int) gameField.BlockSize * 2, 0),
+                 new Point((int) gameField.BlockSize * 4, 0),
+                 new Point((int) gameField.BlockSize * 8, 0),
+                 new Point((int) gameField.BlockSize * 12, 0)
             };
  
             List<string> field = new List<string>
@@ -80,13 +71,13 @@ namespace Inokhodov_Victor_Tanks
 
             InitializeComponent();
             imageController.LoadImages();
-            blockController.InitializeField(field, (int) blockSize);
-            ballController.CreateBall(ballPosition.X , ballPosition.Y, (int) blockSize - blockTankSizeDifference, speed);
-            tankController.InitializeTanks(enemies, (int) blockSize - blockTankSizeDifference, tanksPositions, speed);
+            blockController.InitializeField(field, (int) gameField.BlockSize);
+            ballController.CreateBall(ballPosition.X , ballPosition.Y, (int) gameField.BlockSize - blockTankSizeDifference, gameField.GameSpeed);
+            tankController.InitializeTanks(gameField.NumOfEnemies, (int) gameField.BlockSize - blockTankSizeDifference, tanksPositions, gameField.GameSpeed);
             appleController.Initialize();
 
-            pictureBox.Size = new Size(size, size);
-            Size = new Size(size + horizontalSizeDifference, size + verticalSizeDifference);
+            pictureBox.Size = new Size(gameField.Size, gameField.Size);
+            Size = new Size(gameField.Size + horizontalSizeDifference, gameField.Size + verticalSizeDifference);
         }
 
        public void Update(object sender, EventArgs e)
@@ -128,12 +119,12 @@ namespace Inokhodov_Victor_Tanks
 
             tankController.Shoot();
             gameOver = tankController.MoveBullets(pictureBox.Width, pictureBox.Height, ballController.GetBall(), blockController.GetBlocks());
-            appleController.Add(numOfApples, (int)blockSize / 2, pictureBox.Width, pictureBox.Height, blockController.GetBlocks());
+            appleController.Add(gameField.NumOfApples, (int)gameField.BlockSize / 2, pictureBox.Width, pictureBox.Height, blockController.GetBlocks());
             score += appleController.CheckCollision(ballController.GetBall());
-            ballController.MoveBall(width, height ,blockController.GetBlocks());
+            ballController.MoveBall(gameField.Size, gameField.Size, blockController.GetBlocks());
             Draw();
 
-            if (killedTanks == numOfTanks)
+            if (killedTanks == gameField.NumOfEnemies)
             {
                 timer.Enabled = false;
 
@@ -154,7 +145,7 @@ namespace Inokhodov_Victor_Tanks
             var tanks = tankController.GetTanks().ToArray();
             var ball = ballController.GetBall();
 
-            for (int i = 0; i < numOfTanks; i++)
+            for (int i = 0; i < gameField.NumOfEnemies; i++)
             {
                 tanks[i].PosX = tanksPositions[i].X;
                 tanks[i].PosY = tanksPositions[i].Y;
@@ -174,11 +165,11 @@ namespace Inokhodov_Victor_Tanks
 
         public void Draw()
         {
-            Bitmap flag = new Bitmap(fieldSize, fieldSize);
+            Bitmap flag = new Bitmap(gameField.Size, gameField.Size);
             Graphics flagGraphics = Graphics.FromImage(flag);
 
-            BallView.DrawBall(ballController.GetBall(), flagGraphics, imageController.GetImages());
             BlocksView.DrawBlocks(blockController.GetBlocks(), flagGraphics);
+            BallView.DrawBall(ballController.GetBall(), flagGraphics, imageController.GetImages());
             TankView.DrawTanks(tankController.GetTanks(), flagGraphics, imageController.GetImages());
             AppleView.DrawApples(appleController.GetApples(), flagGraphics);
 

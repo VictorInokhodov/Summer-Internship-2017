@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,10 +14,10 @@ namespace Inokhodov_Victor_Tanks
         /// </summary>
         [STAThread]
         static void Main()
-        {
+        { 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(585, 5, 5, 2));
+            Application.Run(new MainForm(new FieldController(585, 5, 5, 2).GetField()));
         }
     }
 }

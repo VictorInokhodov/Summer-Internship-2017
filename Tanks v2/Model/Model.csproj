@@ -43,10 +43,12 @@
     <Compile Include="AppleModel.cs" />
     <Compile Include="BallModel.cs" />
     <Compile Include="BlockModel.cs" />
+    <Compile Include="FieldModel.cs" />
     <Compile Include="ImageModel.cs" />
     <Compile Include="Interfaces\IAppleModel.cs" />
     <Compile Include="Interfaces\IBallModel.cs" />
     <Compile Include="Interfaces\IBlockModel.cs" />
+    <Compile Include="Interfaces\IFieldModel.cs" />
     <Compile Include="Interfaces\ITankModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TankModel.cs" />

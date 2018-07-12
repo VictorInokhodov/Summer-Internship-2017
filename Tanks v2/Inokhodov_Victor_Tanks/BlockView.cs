@@ -22,7 +22,7 @@ namespace Inokhodov_Victor_Tanks
                     }
                     else
                     {
-                        flagGraphics.FillRectangle(Brushes.Gold, block.PosX, block.PosY, block.Size, block.Size);
+                        flagGraphics.FillRectangle(Brushes.CornflowerBlue, block.PosX, block.PosY, block.Size, block.Size);
                     }
                 }
             }

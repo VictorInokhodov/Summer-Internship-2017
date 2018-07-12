@@ -127,16 +127,12 @@ namespace Model
 
                     foreach (Block block in blocks)
                     {
-                        if (Collision.CollisionBox(tank.Bullet, block) && block.IsEnabled)
+                        if (Collision.CollisionBox(tank.Bullet, block) && block.IsEnabled && block.Name == "b")
                         {
                             tank.Bullet.IsEnable = false;
                             tank.Bullet.PosX = -tank.Size;
                             tank.Bullet.wasDisabled = DateTime.Now;
-
-                            if (block.Name == "b")
-                            {
-                                block.IsEnabled = false;
-                            }
+                            block.IsEnabled = false;
                         }
                     }
 
